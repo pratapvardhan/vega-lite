@@ -1,11 +1,14 @@
+import {AggregateOp} from '../../aggregate';
 import {add} from '../../compositemark/index';
 import {WindowFieldDef, WindowTransform} from '../../transform';
 import {duplicate} from '../../util';
 import {VgWindowTransform} from '../../vega.schema';
 import {DataFlowNode} from './dataflow';
 import {WindowOnlyOp} from '../../window';
-import {AggregateOp} from '../../aggregate';
 
+/**
+ * A class for the window transform nodes
+ */
 export class WindowTransformNode extends DataFlowNode {
   public clone(): WindowTransformNode {
       return new WindowTransformNode(duplicate(this.transform));
@@ -44,7 +47,8 @@ export class WindowTransformNode extends DataFlowNode {
       fields: fields,
       ignorePeers: this.transform.ignorePeers,
       groupby: this.transform.groupby,
-      sort: this.transform.sort
+      sort: this.transform.sort,
+      frame: this.transform.frame
     };
 
     return result;
