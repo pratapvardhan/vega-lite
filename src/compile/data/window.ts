@@ -1,10 +1,9 @@
 import {AggregateOp} from '../../aggregate';
-import {add} from '../../compositemark/index';
 import {WindowFieldDef, WindowTransform} from '../../transform';
 import {duplicate} from '../../util';
 import {VgWindowTransform} from '../../vega.schema';
-import {DataFlowNode} from './dataflow';
 import {WindowOnlyOp} from '../../window';
+import {DataFlowNode} from './dataflow';
 
 /**
  * A class for the window transform nodes
