@@ -1,4 +1,4 @@
-import {isNumber} from 'vega-util';
+import {isNumber} from 'util';
 import {Channel} from '../channel';
 import {Config} from '../config';
 import {reduce} from '../encoding';
@@ -33,7 +33,7 @@ export interface BoxPlotDef {
    * Extent is used to determine where the whiskers extend to. The options are
    * - `"min-max": min and max are the lower and upper whiskers respectively.
    * - `"number": A scalar (integer or floating point number) that will be multiplied by the IQR and the product will be added to the third quartile to get the upper whisker and subtracted from the first quartile to get the lower whisker.
-   * __Default value:__ `"min-max"`.
+   * __Default value:__ `"1.5"`.
    */
   extent?: 'min-max' | number;
 }
@@ -47,6 +47,8 @@ export const BOXPLOT_STYLES: BoxPlotStyle[] = ['boxWhisker', 'box', 'boxMid'];
 export interface BoxPlotConfig extends MarkConfig {
   /** Size of the box and mid tick of a box plot */
   size?: number;
+  /** A scalar that will be multiplied by the IQR */
+  extent?: number;
 }
 
 export interface BoxPlotConfigMixins {
@@ -96,10 +98,14 @@ export function normalizeBoxPlot(spec: GenericUnitSpec<Encoding<string>, BOXPLOT
   const {mark, encoding, selection, ...outerSpec} = spec;
 
   let kIQRScalar: number = undefined;
+  if (isNumber(config.box.extent)) {
+    kIQRScalar = config.box.extent;
+  }
+
   if (isBoxPlotDef(mark)) {
     if (mark.extent) {
-      if(isNumber(mark.extent)) {
-        kIQRScalar = mark.extent;
+      if(mark.extent === 'min-max') {
+        kIQRScalar = undefined;
       }
     }
   }
