@@ -7214,9 +7214,8 @@
           "description": "The operations supported for the window aggregation"
         },
         "param": {
-          "additionalProperties": false,
           "description": "The optional parameters for the operation",
-          "type": "object"
+          "type": "number"
         }
       },
       "required": [
@@ -7246,9 +7245,10 @@
         "frame": {
           "description": "The frame for the window, if none is set the default is [null, 0] everything before the\ncurrent item",
           "items": {
-            "additionalProperties": false,
-            "description": "An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers. ",
-            "type": "object"
+            "type": [
+              "null",
+              "number"
+            ]
           },
           "type": "array"
         },

@@ -111,7 +111,7 @@ export interface WindowFieldDef {
   /**
    * The optional parameters for the operation
    */
-  param?: Number;
+  param?: number;
 
   /**
    * The field that will be used in the operation, some operations
@@ -135,7 +135,7 @@ export interface WindowTransform {
    * The frame for the window, if none is set the default is [null, 0] everything before the
    * current item
    */
-  frame?: Number[];
+  frame?: (null | number)[];
 
   /**
    * Whether to ignoreThePeers during the comparison in the window

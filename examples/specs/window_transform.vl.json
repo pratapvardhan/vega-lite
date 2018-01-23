@@ -25,7 +25,6 @@
             {
                 "window": [{
                     "op": "row_number",
-                    "field": null,
                     "as": "RowNumber"
                 }]
             }
@@ -33,7 +32,7 @@
         "mark": { "type": "bar", "clip": true },
         "encoding": {
             "x": {
-                "field": "RowNumber",
+                "field": "ny",
                 "type": "quantitative"
             },
             "y": {

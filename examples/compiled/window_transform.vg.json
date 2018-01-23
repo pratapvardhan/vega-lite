@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-    "description": "Horizon Graph with 2 layers. (See https://idl.cs.washington.edu/papers/horizon/ for more details on Horizon Graphs.)",
+    "description": "Bar graph showing the row number for each of the cells",
     "autosize": "pad",
     "padding": 5,
     "width": 300,
@@ -98,6 +98,11 @@
             "transform": [
                 {
                     "type": "formula",
+                    "expr": "toNumber(datum[\"x\"])",
+                    "as": "x"
+                },
+                {
+                    "type": "formula",
                     "expr": "datum.y - 50",
                     "as": "ny"
                 },
@@ -117,18 +122,8 @@
                     ]
                 },
                 {
-                    "type": "formula",
-                    "expr": "toNumber(datum[\"RowNumber\"])",
-                    "as": "RowNumber"
-                },
-                {
-                    "type": "formula",
-                    "expr": "toNumber(datum[\"x\"])",
-                    "as": "x"
-                },
-                {
                     "type": "filter",
-                    "expr": "datum[\"RowNumber\"] !== null && !isNaN(datum[\"RowNumber\"]) && datum[\"x\"] !== null && !isNaN(datum[\"x\"])"
+                    "expr": "datum[\"ny\"] !== null && !isNaN(datum[\"ny\"]) && datum[\"x\"] !== null && !isNaN(datum[\"x\"])"
                 }
             ]
         }
@@ -148,7 +143,7 @@
                 "update": {
                     "xc": {
                         "scale": "x",
-                        "field": "RowNumber"
+                        "field": "ny"
                     },
                     "width": {
                         "value": 5
@@ -175,7 +170,7 @@
             "type": "linear",
             "domain": {
                 "data": "data_0",
-                "field": "RowNumber"
+                "field": "ny"
             },
             "range": [
                 0,
@@ -184,7 +179,8 @@
                 }
             ],
             "nice": true,
-            "zero": true
+            "zero": true,
+            "padding": 5
         },
         {
             "name": "y",
@@ -207,11 +203,12 @@
         {
             "scale": "x",
             "orient": "bottom",
+            "labelFlush": true,
             "labelOverlap": true,
             "tickCount": {
                 "signal": "ceil(width/40)"
             },
-            "title": "RowNumber",
+            "title": "ny",
             "zindex": 1
         },
         {

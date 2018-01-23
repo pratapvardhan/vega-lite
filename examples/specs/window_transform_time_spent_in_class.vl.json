@@ -29,10 +29,6 @@
         }],
         "mark": { "type": "bar", "clip": true },
         "encoding": {
-            "column": {
-                "field": "student",
-                "type": "nominal"
-            },
             "x": {
                 "field": "Class",
                 "type": "nominal",
@@ -48,10 +44,10 @@
                 "field": "student",
                 "type": "nominal"
             }
-        },
-        "config": {
-            "view": { "stroke": "transparent" },
-            "axis": { "domainWidth": 1 }
         }
-    }]
+    }],
+    "config": {
+        "view": { "stroke": "transparent" },
+        "axis": { "domainWidth": 1 }
+    }
 }

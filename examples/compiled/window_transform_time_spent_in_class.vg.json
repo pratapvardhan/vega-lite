@@ -179,8 +179,7 @@
                 "fields": [
                     "TimeInClass_start",
                     "TimeInClass_end"
-                ],
-                "sort": true
+                ]
             },
             "range": [
                 {
@@ -251,8 +250,16 @@
         }
     ],
     "config": {
+        "axis": {
+            "domainWidth": 1
+        },
         "axisY": {
             "minExtent": 30
+        },
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
         }
     }
 }
