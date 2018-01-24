@@ -836,16 +836,40 @@
       "additionalProperties": false,
       "properties": {
         "field": {
-          "description": "The field that will be compared",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          ],
+          "description": "The field that will be compared"
         },
         "order": {
-          "description": "The order in which it will be compared",
-          "enum": [
-            "ascending",
-            "descending"
+          "anyOf": [
+            {
+              "enum": [
+                "ascending",
+                "descending"
+              ],
+              "type": "string"
+            },
+            {
+              "items": {
+                "enum": [
+                  "ascending",
+                  "descending"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
           ],
-          "type": "string"
+          "description": "The order in which it will be compared"
         }
       },
       "required": [
@@ -7195,11 +7219,11 @@
       "additionalProperties": false,
       "properties": {
         "as": {
-          "description": "The name for the new field in the window transform",
+          "description": "The name for the new field in the window transform.",
           "type": "string"
         },
         "field": {
-          "description": "The field that will be used in the operation, some operations\ndo not require fields",
+          "description": "The field that will be used in the operation, some operations\ndo not require fields.",
           "type": "string"
         },
         "op": {
@@ -7211,10 +7235,10 @@
               "$ref": "#/definitions/WindowOnlyOp"
             }
           ],
-          "description": "The operations supported for the window aggregation"
+          "description": "The operations supported for the window aggregation. See the list of supported operations here:\n   https://vega.github.io/vega/docs/transforms/window/#ops"
         },
         "param": {
-          "description": "The optional parameters for the operation",
+          "description": "The optional parameters for the operation. For example the window operator (nth_value)\ntakes a parameter N and returns the nth value in the current frame.",
           "type": "number"
         }
       },
@@ -7243,7 +7267,7 @@
       "additionalProperties": false,
       "properties": {
         "frame": {
-          "description": "The frame for the window, if none is set the default is [null, 0] everything before the\ncurrent item",
+          "description": "The frame for the window, if none is set the default is `[null, 0]` everything before the\ncurrent item.",
           "items": {
             "type": [
               "null",
@@ -7253,22 +7277,22 @@
           "type": "array"
         },
         "groupby": {
-          "description": "The fields to group by",
+          "description": "The fields to group by.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "ignorePeers": {
-          "description": "Whether to ignoreThePeers during the comparison in the window",
+          "description": "Whether to ignoreThePeers during the comparison in the window.",
           "type": "boolean"
         },
         "sort": {
           "$ref": "#/definitions/Comparator",
-          "description": "The comparator to use to determine the window"
+          "description": "The comparator to use to determine the window."
         },
         "window": {
-          "description": "Array of objects that summarize the fields that will be aggregated over the window",
+          "description": "Array of objects that summarize the fields that will be aggregated over the window.",
           "items": {
             "$ref": "#/definitions/WindowFieldDef"
           },

@@ -104,51 +104,53 @@ export interface AggregatedFieldDef {
 
 export interface WindowFieldDef {
   /**
-   * The operations supported for the window aggregation
+   * The operations supported for the window aggregation. See the list of supported operations here:
+   *   https://vega.github.io/vega/docs/transforms/window/#ops
    */
   op: AggregateOp | WindowOnlyOp;
 
   /**
-   * The optional parameters for the operation
+   * The optional parameters for the operation. For example the window operator (nth_value)
+   * takes a parameter N and returns the nth value in the current frame.
    */
   param?: number;
 
   /**
    * The field that will be used in the operation, some operations
-   * do not require fields
+   * do not require fields.
    */
   field?: string;
 
   /**
-   * The name for the new field in the window transform
+   * The name for the new field in the window transform.
    */
   as?: string;
 }
 
 export interface WindowTransform {
   /**
-   * Array of objects that summarize the fields that will be aggregated over the window
+   * Array of objects that summarize the fields that will be aggregated over the window.
    */
   window: WindowFieldDef[];
 
   /**
-   * The frame for the window, if none is set the default is [null, 0] everything before the
-   * current item
+   * The frame for the window, if none is set the default is `[null, 0]` everything before the
+   * current item.
    */
   frame?: (null | number)[];
 
   /**
-   * Whether to ignoreThePeers during the comparison in the window
+   * Whether to ignoreThePeers during the comparison in the window.
    */
   ignorePeers?: boolean;
 
   /**
-   * The fields to group by
+   * The fields to group by.
    */
   groupby?: string[];
 
   /**
-   * The comparator to use to determine the window
+   * The comparator to use to determine the window.
    */
   sort?: Comparator;
 }
@@ -199,12 +201,12 @@ export interface Comparator {
   /**
    * The field that will be compared
    */
-  field: string;
+  field: string | string[];
 
   /**
    * The order in which it will be compared
    */
-  order?: 'ascending' | 'descending';
+  order?: ('ascending' | 'descending') | ('ascending' | 'descending')[];
 }
 
 export function isLookup(t: Transform): t is LookupTransform {

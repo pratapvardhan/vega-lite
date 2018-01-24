@@ -28,11 +28,11 @@ export class WindowTransformNode extends DataFlowNode {
 
   public assemble(): VgWindowTransform {
     const fields: string[] = [];
-    const operations: (AggregateOp | WindowOnlyOp)[] = [];
+    const ops: (AggregateOp | WindowOnlyOp)[] = [];
     const as = [];
     const params = [];
     for (const window of this.transform.window) {
-      operations.push(window.op);
+      ops.push(window.op);
       as.push(window.as);
       params.push(window.param);
       fields.push(window.field);
@@ -40,14 +40,14 @@ export class WindowTransformNode extends DataFlowNode {
 
     const result: VgWindowTransform = {
       type: 'window',
-      params: params,
-      as: as,
-      ops: operations,
-      fields: fields,
+      params,
+      as,
+      ops,
+      fields,
+      frame: this.transform.frame,
       ignorePeers: this.transform.ignorePeers,
       groupby: this.transform.groupby,
       sort: this.transform.sort,
-      frame: this.transform.frame
     };
 
     return result;

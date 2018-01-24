@@ -1298,17 +1298,17 @@ export type VgComparatorOrder = 'ascending' | 'descending';
 
 export interface VgComparator {
   field?: string | string[];
-  order?: VgComparatorOrder;
+  order?: VgComparatorOrder | VgComparatorOrder[];
 }
 
 export interface VgWindowTransform {
   type: 'window';
-  sort?: VgComparator;
-  groupby?: string[];
-  ops?: (AggregateOp | WindowOnlyOp)[];
-  fields?: string[];
   params?: Number[];
   as?: string[];
+  ops?: (AggregateOp | WindowOnlyOp)[];
+  fields?: string[];
   frame?: Number[];
   ignorePeers?: Boolean;
+  groupby?: string[];
+  sort?: VgComparator;
 }
