@@ -34,7 +34,7 @@ function validateVL(spec: TopLevelExtendedSpec) {
 }
 
 function validateVega(spec: TopLevelExtendedSpec) {
-  const vegaSpec = compile(spec).spec;
+  const vegaSpec = JSON.parse(JSON.stringify(compile(spec).spec));
 
   const valid = validateVg(vegaSpec);
   const errors = validateVg.errors;
