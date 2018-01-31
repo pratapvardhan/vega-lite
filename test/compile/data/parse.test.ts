@@ -81,5 +81,32 @@ describe('compile/data/parse', () => {
       const result = parseTransformArray(model);
       assert.isTrue(result.first instanceof WindowTransformNode);
     });
+    it ('should return a WindowTransform Node with optional properties', () => {
+      const transform: Transform = {
+        window: [
+          {
+            op: 'row_number',
+            as: 'ordered_row_number',
+          },
+        ],
+        ignorePeers: false,
+        sort: {
+          field:'f',
+          order:'ascending'
+        }
+      };
+      const model = parseUnitModel({
+        data: {values: []},
+        mark: 'point',
+        transform: [
+          transform
+        ],
+        encoding: {
+          x: {field: 'a', type: 'temporal', timeUnit: 'month'}
+        }
+      });
+      const result = parseTransformArray(model);
+      assert.isTrue(result.first instanceof WindowTransformNode);
+    });
   });
 });
