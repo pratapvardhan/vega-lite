@@ -32,11 +32,26 @@ export class WindowTransformNode extends DataFlowNode {
     const as = [];
     const params = [];
     for (const window of this.transform.window) {
-      ops.push(window.op);
-      as.push(window.as);
-      params.push(window.param);
-      fields.push(window.field);
+      if (window.op !== undefined) {
+        ops.push(window.op);
+      }
+      if (window.as !== undefined) {
+        as.push(window.as);
+      }
+
+      if (window.param) {
+        params.push(window.param);
+      }
+
+      if (window.field) {
+        fields.push(window.field);
+      }
     }
+
+    const frame = this.transform.frame;
+    const groupby = this.transform.groupby;
+    const sort = this.transform.sort;
+    const ignorePeers = this.transform.ignorePeers;
 
     const result: VgWindowTransform = {
       type: 'window',
@@ -44,10 +59,10 @@ export class WindowTransformNode extends DataFlowNode {
       as,
       ops,
       fields,
-      frame: this.transform.frame,
-      ignorePeers: this.transform.ignorePeers,
-      groupby: this.transform.groupby,
-      sort: this.transform.sort,
+      frame,
+      ignorePeers,
+      groupby,
+      sort,
     };
 
     return result;
