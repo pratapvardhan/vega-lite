@@ -72,17 +72,17 @@
                     "fields": [
                         "Length"
                     ],
+                    "frame": [
+                        null,
+                        0
+                    ],
                     "groupby": [
                         "Student"
                     ],
                     "sort": {
                         "field": "TimeOfDay",
                         "order": "ascending"
-                    },
-                    "frame": [
-                        null,
-                        0
-                    ]
+                    }
                 },
                 {
                     "type": "formula",
@@ -129,6 +129,10 @@
             },
             "encode": {
                 "update": {
+                    "fill": {
+                        "scale": "color",
+                        "field": "student"
+                    },
                     "x": {
                         "scale": "x",
                         "field": "Class"
@@ -144,10 +148,6 @@
                     "y2": {
                         "scale": "y",
                         "field": "TimeInClass_start"
-                    },
-                    "fill": {
-                        "scale": "color",
-                        "field": "student"
                     }
                 }
             }

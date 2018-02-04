@@ -32,20 +32,10 @@ export class WindowTransformNode extends DataFlowNode {
     const as = [];
     const params = [];
     for (const window of this.transform.window) {
-      if (window.op !== undefined) {
-        ops.push(window.op);
-      }
-      if (window.as !== undefined) {
-        as.push(window.as);
-      }
-
-      if (window.param) {
-        params.push(window.param);
-      }
-
-      if (window.field) {
-        fields.push(window.field);
-      }
+      ops.push(window.op === undefined ? null : window.op);
+      as.push(window.as === undefined ? null : window.as);
+      params.push(window.param === undefined ? null : window.param);
+      fields.push(window.field === undefined ? null : window.field);
     }
 
     const frame = this.transform.frame;

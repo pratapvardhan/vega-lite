@@ -32,13 +32,13 @@
         "mark": { "type": "bar", "clip": true },
         "encoding": {
             "x": {
-                "field": "ny",
-                "type": "quantitative"
+                "field": "RowNumber",
+                "type": "quantitative",
+                "axis": { "title": "Row Number" }
             },
             "y": {
-                "field": "x",
+                "field": "y",
                 "type": "quantitative",
-                "scale": { "domain": [0, 20] },
                 "axis": { "title": "y" }
             }
         }

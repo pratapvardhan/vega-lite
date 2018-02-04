@@ -98,11 +98,6 @@
             "transform": [
                 {
                     "type": "formula",
-                    "expr": "toNumber(datum[\"x\"])",
-                    "as": "x"
-                },
-                {
-                    "type": "formula",
                     "expr": "datum.y - 50",
                     "as": "ny"
                 },
@@ -122,8 +117,18 @@
                     ]
                 },
                 {
+                    "type": "formula",
+                    "expr": "toNumber(datum[\"RowNumber\"])",
+                    "as": "RowNumber"
+                },
+                {
+                    "type": "formula",
+                    "expr": "toNumber(datum[\"y\"])",
+                    "as": "y"
+                },
+                {
                     "type": "filter",
-                    "expr": "datum[\"ny\"] !== null && !isNaN(datum[\"ny\"]) && datum[\"x\"] !== null && !isNaN(datum[\"x\"])"
+                    "expr": "datum[\"RowNumber\"] !== null && !isNaN(datum[\"RowNumber\"]) && datum[\"y\"] !== null && !isNaN(datum[\"y\"])"
                 }
             ]
         }
@@ -141,24 +146,23 @@
             },
             "encode": {
                 "update": {
+                    "fill": {
+                        "value": "#4c78a8"
+                    },
                     "xc": {
                         "scale": "x",
-                        "field": "ny"
+                        "field": "RowNumber"
                     },
                     "width": {
                         "value": 5
                     },
                     "y": {
                         "scale": "y",
-                        "field": "x"
+                        "field": "y"
                     },
                     "y2": {
-                        "field": {
-                            "group": "height"
-                        }
-                    },
-                    "fill": {
-                        "value": "#4c78a8"
+                        "scale": "y",
+                        "value": 0
                     }
                 }
             }
@@ -170,7 +174,7 @@
             "type": "linear",
             "domain": {
                 "data": "data_0",
-                "field": "ny"
+                "field": "RowNumber"
             },
             "range": [
                 0,
@@ -185,10 +189,10 @@
         {
             "name": "y",
             "type": "linear",
-            "domain": [
-                0,
-                20
-            ],
+            "domain": {
+                "data": "data_0",
+                "field": "y"
+            },
             "range": [
                 {
                     "signal": "height"
@@ -196,11 +200,12 @@
                 0
             ],
             "nice": true,
-            "zero": false
+            "zero": true
         }
     ],
     "axes": [
         {
+            "title": "Row Number",
             "scale": "x",
             "orient": "bottom",
             "labelFlush": true,
@@ -208,7 +213,6 @@
             "tickCount": {
                 "signal": "ceil(width/40)"
             },
-            "title": "ny",
             "zindex": 1
         },
         {

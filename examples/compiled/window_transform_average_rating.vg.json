@@ -45,12 +45,12 @@
                     "fields": [
                         "Rating"
                     ],
-                    "groupby": [
-                        "Year"
-                    ],
                     "frame": [
                         null,
                         null
+                    ],
+                    "groupby": [
+                        "Year"
                     ]
                 },
                 {
@@ -78,6 +78,9 @@
             },
             "encode": {
                 "update": {
+                    "fill": {
+                        "value": "#4c78a8"
+                    },
                     "x": {
                         "scale": "x",
                         "field": "name"
@@ -94,9 +97,6 @@
                         "field": {
                             "group": "height"
                         }
-                    },
-                    "fill": {
-                        "value": "#4c78a8"
                     }
                 }
             }
