@@ -114,7 +114,11 @@
                     ],
                     "fields": [
                         null
-                    ]
+                    ],
+                    "sort": {
+                        "field": [],
+                        "order": []
+                    }
                 },
                 {
                     "type": "formula",

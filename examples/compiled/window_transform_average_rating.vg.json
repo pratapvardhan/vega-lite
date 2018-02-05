@@ -51,7 +51,11 @@
                     ],
                     "groupby": [
                         "Year"
-                    ]
+                    ],
+                    "sort": {
+                        "field": [],
+                        "order": []
+                    }
                 },
                 {
                     "type": "formula",
