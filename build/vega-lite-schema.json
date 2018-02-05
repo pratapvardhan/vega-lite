@@ -835,41 +835,32 @@
     "Comparator": {
       "additionalProperties": false,
       "properties": {
+        "compare": {
+          "description": "The field that will be compared",
+          "items": {
+            "$ref": "#/definitions/ComparatorField"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "compare"
+      ],
+      "type": "object"
+    },
+    "ComparatorField": {
+      "additionalProperties": false,
+      "description": "A comparator fields",
+      "properties": {
         "field": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          ],
-          "description": "The field that will be compared"
+          "type": "string"
         },
         "order": {
-          "anyOf": [
-            {
-              "enum": [
-                "ascending",
-                "descending"
-              ],
-              "type": "string"
-            },
-            {
-              "items": {
-                "enum": [
-                  "ascending",
-                  "descending"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
+          "enum": [
+            "ascending",
+            "descending"
           ],
-          "description": "The order in which it will be compared"
+          "type": "string"
         }
       },
       "required": [

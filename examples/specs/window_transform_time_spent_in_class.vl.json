@@ -21,7 +21,7 @@
                 "field": "Length",
                 "as": "TimeInClass"
             }],
-            "sort": { "field": "TimeOfDay", "order": "ascending" },
+            "sort": { "compare": [{ "field": "TimeOfDay", "order": "ascending" }] },
             "groupby": [
                 "Student"
             ],

@@ -91,8 +91,12 @@ describe('compile/data/parse', () => {
         ],
         ignorePeers: false,
         sort: {
-          field:'f',
-          order:'ascending'
+          compare: [
+            {
+              field:'f',
+              order:'ascending'
+            }
+          ]
         }
       };
       const model = parseUnitModel({

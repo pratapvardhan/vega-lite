@@ -197,16 +197,20 @@ export interface LookupTransform {
   default?: string;
 }
 
+
+/**
+ * A comparator fields
+ */
+export interface ComparatorField {
+  field: string;
+  order?: ('ascending' | 'descending');
+}
+
 export interface Comparator {
   /**
    * The field that will be compared
    */
-  field: string | string[];
-
-  /**
-   * The order in which it will be compared
-   */
-  order?: ('ascending' | 'descending') | ('ascending' | 'descending')[];
+  compare: ComparatorField[];
 }
 
 export function isLookup(t: Transform): t is LookupTransform {
