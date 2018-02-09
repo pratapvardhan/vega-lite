@@ -89,7 +89,9 @@ describe('compile/data/assemble', () => {
               order:'ascending'
             }
           ]
-        }
+        },
+        groupby: ['f'],
+        frame: [null, 0]
       };
       const agg = new WindowTransformNode(transform);
       agg.parent = raw;
@@ -124,7 +126,9 @@ describe('compile/data/assemble', () => {
             order: ["ascending"],
           },
           ignorePeers: false,
-          as: ['ordered_row_number']
+          as: ['ordered_row_number'],
+          frame: [null, 0],
+          groupby: ['f']
         }]}
       ]);
     });
