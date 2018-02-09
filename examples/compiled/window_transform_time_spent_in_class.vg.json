@@ -72,21 +72,21 @@
                     "fields": [
                         "Length"
                     ],
-                    "frame": [
-                        null,
-                        0
-                    ],
-                    "groupby": [
-                        "Student"
-                    ],
                     "sort": {
                         "field": [
-                            "ascending"
+                            "TimeOfDay"
                         ],
                         "order": [
                             "ascending"
                         ]
-                    }
+                    },
+                    "groupby": [
+                        "Student"
+                    ],
+                    "frame": [
+                        null,
+                        0
+                    ]
                 },
                 {
                     "type": "formula",

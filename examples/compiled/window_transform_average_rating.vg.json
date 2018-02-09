@@ -45,17 +45,17 @@
                     "fields": [
                         "Rating"
                     ],
-                    "frame": [
-                        null,
-                        null
-                    ],
-                    "groupby": [
-                        "Year"
-                    ],
                     "sort": {
                         "field": [],
                         "order": []
-                    }
+                    },
+                    "groupby": [
+                        "Year"
+                    ],
+                    "frame": [
+                        null,
+                        null
+                    ]
                 },
                 {
                     "type": "formula",
