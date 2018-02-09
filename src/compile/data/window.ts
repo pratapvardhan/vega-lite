@@ -44,7 +44,7 @@ export class WindowTransformNode extends DataFlowNode {
     const sortOrder: VgComparatorOrder[] = [];
     if (this.transform.sort !== undefined) {
       for (const compField of this.transform.sort.compare) {
-        sortFields.push(compField.order);
+        sortFields.push(compField.field);
         sortOrder.push(compField.order === undefined ? null : compField.order as VgComparatorOrder);
       }
     }
@@ -60,11 +60,24 @@ export class WindowTransformNode extends DataFlowNode {
       as,
       ops,
       fields,
-      frame,
-      ignorePeers,
-      groupby,
       sort,
     };
+
+    if (ignorePeers !== undefined) {
+      result.ignorePeers = ignorePeers;
+    }
+
+    if (fields !== undefined) {
+      result.fields = fields;
+    }
+
+    if (groupby !== undefined) {
+      result.groupby = groupby;
+    }
+
+    if (frame !== undefined) {
+      result.frame = frame;
+    }
 
     return result;
   }
